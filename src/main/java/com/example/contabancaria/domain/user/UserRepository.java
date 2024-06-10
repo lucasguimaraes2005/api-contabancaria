@@ -2,4 +2,6 @@ package com.example.contabancaria.domain.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, String> {}
+public interface UserRepository extends JpaRepository<User, String> {
+    User findByEmail(String email);
+}

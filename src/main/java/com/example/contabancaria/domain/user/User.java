@@ -1,17 +1,19 @@
 package com.example.contabancaria.domain.user;
 
 
+import com.example.contabancaria.domain.contabancaria.ContaBancaria;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Table(name = "usuario")
 @Entity(name = "usuario")
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode()
-
+@Getter
+@Setter
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.UUID)
@@ -26,4 +28,7 @@ public class User {
     private String email;
 
     private String senha;
+
+    @OneToMany(mappedBy = "proprietario")
+    private List<ContaBancaria> contasBancarias;
 }

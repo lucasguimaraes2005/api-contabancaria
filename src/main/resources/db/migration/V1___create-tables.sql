@@ -4,7 +4,7 @@ CREATE TABLE usuario (
     sexo CHAR(1) NOT NULL,
     CPF CHAR(14) NOT NULL UNIQUE,
     email VARCHAR(150) NOT NULL UNIQUE,
-    senha VARCHAR(10) NOT NULL
+    senha VARCHAR(250) NOT NULL
 );
 
 CREATE TABLE contabancaria (
