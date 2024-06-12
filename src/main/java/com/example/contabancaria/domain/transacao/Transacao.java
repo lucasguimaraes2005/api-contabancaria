@@ -15,7 +15,7 @@ import com.example.contabancaria.domain.contabancaria.ContaBancaria;
 
 public class Transacao {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "id_contabancaria")

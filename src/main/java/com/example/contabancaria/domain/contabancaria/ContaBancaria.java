@@ -14,7 +14,7 @@ import lombok.*;
 
 public class ContaBancaria {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "id_proprietario")
