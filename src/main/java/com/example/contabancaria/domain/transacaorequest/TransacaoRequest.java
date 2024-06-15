@@ -1,6 +1,5 @@
 package com.example.contabancaria.domain.transacaorequest;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TransacaoRequest {
 
-    private String idContaBancaria;
+    private String emailContaBancaria;
     private Double numeroConta;
     private Double valorTransacao;
     private String tipoTransacao;

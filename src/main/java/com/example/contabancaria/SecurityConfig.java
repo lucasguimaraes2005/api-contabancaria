@@ -1,9 +1,11 @@
 package com.example.contabancaria;
 
+import com.example.contabancaria.security.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class SecurityConfig {
@@ -11,16 +13,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests(authorize -> authorize
-                        .anyRequest().permitAll()
+                .authorizeRequests(authorizeRequests -> authorizeRequests
+                        .requestMatchers(req -> req.getServletPath().equals("/auth/login")).permitAll()
+                        .requestMatchers(req -> req.getServletPath().equals("/auth/registro")).permitAll()
                 )
-                .csrf(csrf -> csrf
-                        .disable()
-                );
+                .authorizeRequests(authorizeRequests -> authorizeRequests
+                        .anyRequest().authenticated()
+                )
+                .addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class)
+                .csrf(csrf -> csrf.disable());
         return http.build();
     }
 }
-
-
 
 
