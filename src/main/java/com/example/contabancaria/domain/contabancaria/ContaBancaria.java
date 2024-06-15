@@ -1,6 +1,7 @@
 package com.example.contabancaria.domain.contabancaria;
 
 import com.example.contabancaria.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +30,8 @@ public class ContaBancaria {
     @Column(name = "datahora_cadastro")
     private java.sql.Timestamp dataHoraCadastro;
 
+
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_proprietario", referencedColumnName = "id", insertable = false, updatable = false)
     private User proprietario;

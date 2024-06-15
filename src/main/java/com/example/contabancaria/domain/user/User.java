@@ -2,6 +2,8 @@ package com.example.contabancaria.domain.user;
 
 
 import com.example.contabancaria.domain.contabancaria.ContaBancaria;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +31,8 @@ public class User {
 
     private String senha;
 
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "proprietario")
     private List<ContaBancaria> contasBancarias;
 }
